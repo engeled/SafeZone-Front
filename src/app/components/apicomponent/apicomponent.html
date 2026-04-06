@@ -1,0 +1,67 @@
+<div class="container analyzer-wrapper">
+
+  <h2 class="title">SafeZone Analizador</h2>
+
+  <!-- CARD DE INPUT -->
+  <mat-card class="glass-card">
+    <div class="file-row">
+      <label for="fileInput"><strong>Seleccionar archivo</strong></label>
+      <input id="fileInput" type="file" (change)="onFileChange($event)" />
+    </div>
+
+    <button mat-raised-button color="primary" (click)="analyze()">
+      <mat-icon>science</mat-icon>&nbsp;Analizar archivo
+    </button>
+
+    <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+    <div class="error" *ngIf="error">{{ error }}</div>
+  </mat-card>
+
+  <!-- CARD RESULTADO -->
+  <mat-card *ngIf="summary" class="glass-card result-card">
+
+    <h3 class="subtitle">Resultado del análisis</h3>
+
+    <div class="meta">
+      <div><strong>Nombre:</strong> {{ summary.fileName }}</div>
+      <div><strong>Tamaño:</strong> {{ summary.fileSizeKB }} KB</div>
+      <div><strong>Estado:</strong> {{ summary.status }}</div>
+      <div *ngIf="summary.scanDate"><strong>Fecha:</strong> {{ summary.scanDate }}</div>
+      <div *ngIf="summary.sha256"><strong>SHA-256:</strong> {{ summary.sha256 }}</div>
+    </div>
+
+    <div class="chips">
+      <mat-chip color="warn" selected>Malicious: {{ summary.malicious }}</mat-chip>
+      <mat-chip color="accent" selected>Suspicious: {{ summary.suspicious }}</mat-chip>
+      <mat-chip color="primary" selected>Harmless: {{ summary.harmless }}</mat-chip>
+      <mat-chip>Undetected: {{ summary.undetected }}</mat-chip>
+      <mat-chip>Total engines: {{ summary.total }}</mat-chip>
+    </div>
+
+    <h4 class="subtitle">Detecciones por motor</h4>
+
+    <table mat-table [dataSource]="vendorRows" class="mat-elevation-z8 custom-table" *ngIf="vendorRows.length">
+      <ng-container matColumnDef="engine">
+        <th mat-header-cell *matHeaderCellDef>Motor</th>
+        <td mat-cell *matCellDef="let row">{{ row.engine }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef>Categoría</th>
+        <td mat-cell *matCellDef="let row">{{ row.category }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="result">
+        <th mat-header-cell *matHeaderCellDef>Resultado</th>
+        <td mat-cell *matCellDef="let row">{{ row.result || '—' }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let r; columns: displayedColumns"></tr>
+    </table>
+
+    <div class="no-data" *ngIf="!vendorRows.length">
+      No hay resultados de motores para mostrar.
+    </div>
+  </mat-card>
+</div>

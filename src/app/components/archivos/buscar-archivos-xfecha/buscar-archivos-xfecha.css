@@ -1,0 +1,102 @@
+/* Fondo general */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+}
+
+/* Card glassmorphism neon */
+.glass-card {
+  width: 90%;
+  max-width: 650px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(18px);
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  box-shadow: 0px 0px 25px rgba(0, 255, 255, 0.35);
+  animation: liquidGlow 4s infinite alternate ease-in-out;
+}
+
+/* Neon breathing effect */
+@keyframes liquidGlow {
+  from { box-shadow: 0 0 15px #00f2ea; border-color: #00f2ea; }
+  to { box-shadow: 0 0 35px #00ffbb; border-color: #00ffbb; }
+}
+
+/* Title */
+.titulo {
+  color: #00f2ea;
+  text-shadow: 0 0 10px #00eaff;
+}
+
+/* Inputs */
+.inputs {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+label {
+  font-size: 14px;
+  color: #a7f6ff;
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid #0ff;
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
+  outline: none;
+  width: 160px;
+  text-align: center;
+}
+
+/* Button */
+.btn {
+  background: #00ffcc;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  color: black;
+  transition: 0.3s;
+  font-weight: bold;
+}
+
+.btn:hover {
+  box-shadow: 0px 0px 20px #00ffcc;
+  transform: scale(1.05);
+}
+
+/* Table */
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.tabla th {
+  color: #00f2ea;
+  border-bottom: 2px solid #00f2ea;
+  padding-bottom: 8px;
+}
+
+.tabla td {
+  padding: 10px;
+  border-bottom: 1px solid rgba(0,255,255,0.3);
+}
+
+/* No data */
+.nodata {
+  margin-top: 10px;
+  color: #ff9b9b;
+}

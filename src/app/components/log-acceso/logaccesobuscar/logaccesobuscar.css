@@ -1,0 +1,107 @@
+/* Estilos generales */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 1200px; /* Ancho amplio para que quepa la tabla */
+    margin: 0 auto;
+    padding: 30px;
+    animation: slideUp 0.5s ease-out;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h2 {
+    color: #333;
+    font-size: 28px;
+    font-weight: 500;
+}
+
+/* --- ESTILOS DEL FILTRO --- */
+.filtro-container {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: flex-start; /* Alineación superior para que los inputs coincidan */
+    flex-wrap: wrap; /* Para que baje de línea en celulares */
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+.filtro-item {
+    min-width: 200px;
+}
+
+/* Botón Buscar */
+.btn-buscar {
+    height: 56px; /* Misma altura que los inputs de Material */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white !important;
+    font-size: 16px;
+}
+
+/* Mensaje de alerta */
+.mensaje-alerta {
+    text-align: center;
+    color: #d32f2f;
+    background-color: #ffebee;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+/* --- ESTILOS DE TABLA (Igual a los anteriores) --- */
+.mat-elevation-z8 {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+mat-header-cell {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    color: white !important;
+    font-weight: 600 !important;
+    font-size: 14px;
+}
+
+mat-cell {
+    font-size: 13px;
+    color: #555;
+    padding: 10px !important;
+}
+
+mat-row:nth-child(even) {
+    background-color: #fafafa;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .filtro-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn-buscar {
+        width: 100%;
+    }
+}

@@ -1,0 +1,80 @@
+<div class="welcome-container glass-card">
+  <h1>Bienvenido <span>{{ username }}</span></h1>
+  
+  <div class="menu-buttons">
+    <button class="neon-btn" (click)="cerrar()">Cerrar Sesión</button>
+
+    <p class="subtitle">
+      Gracias por usar <strong>SafeZone</strong>
+      <img src="/assets/logosmenu/logo.png" class="mini-logo">
+    </p>
+  </div>
+</div>
+
+
+<!-- ESPACIO Y CARDS -->
+<div class="cards-section">
+  <div class="cards-grid">
+
+    <div class="menu-card" routerLink="/usuarios">
+      <mat-icon>group</mat-icon>
+      <h3>Usuarios</h3>
+    </div>
+
+    <div class="menu-card" routerLink="/archivos">
+      <mat-icon>folder</mat-icon>
+      <h3>Archivos</h3>
+    </div>
+
+    <div class="menu-card" routerLink="/recomendaciones">
+      <mat-icon>tips_and_updates</mat-icon>
+      <h3>Recomendaciones</h3>
+    </div>
+
+    <div class="menu-card" routerLink="/alertas">
+      <mat-icon>warning</mat-icon>
+      <h3>Alertas</h3>
+    </div>
+
+    <div class="menu-card" routerLink="/recursosducativos">
+      <mat-icon>library_books</mat-icon>
+      <h3>Recursos</h3>
+    </div>
+
+    <div class="menu-card" routerLink="/roles">
+      <mat-icon>security</mat-icon>
+      <h3>Roles</h3>
+    </div>
+
+    <div class="menu-card" routerLink="/auditoria">
+      <mat-icon>fact_check</mat-icon>
+      <h3>Auditoría</h3>
+    </div>
+
+    <div class="menu-card" routerLink="/cuentas">
+      <mat-icon>share</mat-icon>
+      <h3>Cuentas</h3>
+    </div>
+
+    <div class="menu-card" routerLink="/logacceso">
+      <mat-icon>history</mat-icon>
+      <h3>Log Acceso</h3>
+    </div>
+
+    <div class="menu-card" routerLink="/ticketsoporte">
+      <mat-icon>confirmation_number</mat-icon>
+      <h3>Ticket Soporte</h3>
+    </div>
+
+    <div class="menu-card" routerLink="/respuestasoporte">
+      <mat-icon>support_agent</mat-icon>
+      <h3>Respuesta Soporte</h3>
+    </div>
+
+    <div class="menu-card" routerLink="/scan">
+      <mat-icon>bug_report</mat-icon>
+      <h3>Scanner API</h3>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="glass-card">
+
+    <h2 class="titulo">📁 Buscar Archivos por Fechas</h2>
+
+    <div class="inputs">
+      <div>
+        <label>Desde:</label>
+        <input type="date" [(ngModel)]="fechaInicio">
+      </div>
+
+      <div>
+        <label>Hasta:</label>
+        <input type="date" [(ngModel)]="fechaFin">
+      </div>
+    </div>
+
+    <button class="btn" (click)="buscar()">🔍 Buscar</button>
+
+    <hr>
+
+    <h3>Resultados</h3>
+
+    <table *ngIf="resultado.length > 0" class="tabla">
+      <tr>
+        <th>Nombre</th>
+        <th>Tipo</th>
+        <th>Fecha</th>
+        <th>Usuario</th>
+      </tr>
+
+      <tr *ngFor="let r of resultado">
+        <td>{{ r.nombreArchivo }}</td>
+        <td>{{ r.tipoArchivo }}</td>
+        <td>{{ r.fechaArchivo }}</td>
+        <td>{{ r.username }}</td>
+      </tr>
+    </table>
+
+    <p class="nodata" *ngIf="resultado.length === 0">⚠ No hay datos para mostrar</p>
+
+  </div>
+</div>

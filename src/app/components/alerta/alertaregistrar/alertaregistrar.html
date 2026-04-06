@@ -1,0 +1,79 @@
+<div class="container">
+  <div style="text-align: center; margin: 5%"><h2>{{ edicion ? 'Editar Alerta' : 'Registrar Alerta' }}</h2></div>
+  <div style="text-align: center; margin: 5%">
+    <form [formGroup]="form" (submit)="aceptar()">
+      @if(edicion){
+      <mat-form-field>
+        <mat-label>ID</mat-label>
+        <input matInput formControlName="codigo" />
+        <mat-error>
+          @if (form.get('codigo')?.hasError('required')) { Ingrese codigo de la alerta}
+        </mat-error>
+      </mat-form-field>
+      }
+
+      <br />
+      <mat-form-field>
+        <mat-label>Mensaje</mat-label>
+        <input matInput formControlName="mensaje" />
+        <mat-error>
+          @if (form.get('mensaje')?.hasError('required')) { Ingrese un mensaje de la alerta }
+          @if (form.get('mensaje')?.hasError('maxLength')) { Máximo 50 caracteres }
+        </mat-error>
+      </mat-form-field>
+      <br /> 
+        <mat-form-field>
+                <mat-label>Tipo de Alerta</mat-label> 
+                <mat-select formControlName="tipo">
+                     <mat-option value="Peligro bajo">Peligro bajo</mat-option> 
+                    <mat-option value="Peligro moderado">Peligro moderado</mat-option>
+                    <mat-option value="Peligro alto">Peligro alto</mat-option>
+                </mat-select>
+                    <mat-error> 
+                    @if (form.get('tipo')?.hasError('required'))
+                     { Seleccione el tipo de alerta!!} 
+                    </mat-error> 
+                </mat-form-field>
+                  <br />
+
+      <div>
+       
+        
+      </div>
+     
+        <br />
+     
+      
+
+        <br />
+
+      <div>
+       <mat-label>Visto</mat-label>
+        <mat-radio-group aria-label="visto" formControlName="visto">
+          <mat-radio-button [value]="true">Sí</mat-radio-button>
+          <mat-radio-button [value]="false">No</mat-radio-button>
+        </mat-radio-group>
+
+      </div>
+
+      <br />
+
+      <mat-form-field>
+        <mat-label>Usuario</mat-label>
+        <mat-select formControlName="fk">
+          @for (a of listaUsuarios; track a) {
+          <mat-option [value]="a.id">{{ a.username }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+
+      <div>
+        <button matButton="elevated">{{ edicion ? 'Actualizar' : 'Registrar' }}</button>
+      </div>
+      <div>
+      <button type="button" mat-raised-button class="btn-cancel" (click)="cancelar()">Cancelar </button>
+        </div>
+    </form>
+  </div>
+</div>

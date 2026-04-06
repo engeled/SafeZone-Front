@@ -1,0 +1,37 @@
+<div class="login-container">
+
+  <div class="glass-card">
+
+    <img src="assets/logosmenu/logo.png" alt="Logo" class="logo neon-glow">
+
+    <h2 class="title-neon">Inicie sesión</h2>
+
+    <mat-form-field appearance="outline" class="full-width neon-field">
+      <mat-label>Usuario</mat-label>
+      <input matInput placeholder="Username" [(ngModel)]="username" />
+      <mat-icon matSuffix class="icon-neon">person</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width neon-field">
+      <mat-label>Contraseña</mat-label>
+      <input
+        [type]="hidePassword ? 'password' : 'text'"
+        matInput
+        placeholder="Password"
+        [(ngModel)]="password"
+      />
+      <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" type="button">
+        <mat-icon class="icon-neon">{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <button mat-raised-button class="login-btn neon-btn" (click)="login()">
+      Ingresar
+    </button>
+
+    <a class="register-link neon-text" routerLink="/registrar">
+      ¿No tienes una cuenta? Regístrate
+    </a>
+
+  </div>
+</div>

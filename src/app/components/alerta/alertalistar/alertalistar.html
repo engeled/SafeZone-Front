@@ -1,0 +1,82 @@
+<div class="alertas-wrapper">
+  <div class="alertas-container">
+
+    <h2 class="alertas-title">Lista de Alertas</h2>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 alertas-table">
+
+      <!-- ID -->
+      <ng-container matColumnDef="c1">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let element">{{ element.idAlerta }}</td>
+      </ng-container>
+
+      <!-- Mensaje -->
+      <ng-container matColumnDef="c2">
+        <th mat-header-cell *matHeaderCellDef>Mensaje</th>
+        <td mat-cell *matCellDef="let element">{{ element.mensajeAlerta }}</td>
+      </ng-container>
+
+      <!-- Tipo -->
+      <ng-container matColumnDef="c3">
+        <th mat-header-cell *matHeaderCellDef>Tipo</th>
+        <td mat-cell *matCellDef="let element">{{ element.tipoAlerta }}</td>
+      </ng-container>
+
+      <!-- Fecha -->
+      <ng-container matColumnDef="c4">
+        <th mat-header-cell *matHeaderCellDef>Fecha</th>
+        <td mat-cell *matCellDef="let element">{{ element.fechaAlerta }}</td>
+      </ng-container>
+
+      <!-- Hora -->
+      <ng-container matColumnDef="c5">
+        <th mat-header-cell *matHeaderCellDef>Hora</th>
+        <td mat-cell *matCellDef="let element">{{ element.horaAlerta }}</td>
+      </ng-container>
+
+      <!-- Estado -->
+      <ng-container matColumnDef="c6">
+        <th mat-header-cell *matHeaderCellDef>Estado</th>
+        <td mat-cell *matCellDef="let element">
+          <span [class.visto]="element.vistoAlerta" 
+                [class.no-visto]="!element.vistoAlerta">
+            {{ element.vistoAlerta ? 'Visto' : 'No Visto' }}
+          </span>
+        </td>
+      </ng-container>
+
+      <!-- Usuario -->
+      <ng-container matColumnDef="cF">
+        <th mat-header-cell *matHeaderCellDef>Usuario</th>
+        <td mat-cell *matCellDef="let element">{{ element.usuario.username }}</td>
+      </ng-container>
+
+      <!-- Editar -->
+      <ng-container matColumnDef="c7">
+        <th mat-header-cell *matHeaderCellDef>Editar</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button class="btn neon-btn" 
+                  [routerLink]="['editar', element.idAlerta]">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <!-- Eliminar -->
+      <ng-container matColumnDef="c8">
+        <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button class="btn neon-btn danger" 
+                  (click)="eliminar(element.idAlerta)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+    </table>
+  </div>
+</div>

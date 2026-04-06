@@ -1,0 +1,56 @@
+<div class="glass-card-table">
+  <div class="container user-table-wrapper">
+      <div style="text-align: center;margin:5%">
+          <h2 class="title">Lista de Archivos</h2>
+      </div>
+
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 custom-table">
+
+          <ng-container matColumnDef="c1">
+              <th mat-header-cell *matHeaderCellDef> ID</th>
+              <td mat-cell *matCellDef="let element"> {{element.idArchivos}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="c2">
+              <th mat-header-cell *matHeaderCellDef> Nombre </th>
+              <td mat-cell *matCellDef="let element"> {{element.nombreArchivo}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="c3">
+              <th mat-header-cell *matHeaderCellDef> Tipo </th>
+              <td mat-cell *matCellDef="let element"> {{element.tipoArchivo}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="c4">
+              <th mat-header-cell *matHeaderCellDef> Fecha </th>
+              <td mat-cell *matCellDef="let element"> {{element.fechaArchivo}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="c5">
+              <th mat-header-cell *matHeaderCellDef> Usuario </th>
+              <td mat-cell *matCellDef="let element"> {{element.usuario?.username}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="c6">
+              <th mat-header-cell *matHeaderCellDef> Actualizar </th>
+              <td mat-cell *matCellDef="let element">
+                  <button mat-raised-button color="primary" [routerLink]="['actualizar', element.idArchivos]">
+                      <mat-icon>edit</mat-icon>
+                  </button>
+              </td>
+          </ng-container>
+
+          <ng-container matColumnDef="c7">
+              <th mat-header-cell *matHeaderCellDef> Eliminar </th>
+              <td mat-cell *matCellDef="let element">
+                  <button mat-raised-button color="warn" (click)="eliminar(element.idArchivos)">
+                      <mat-icon>delete</mat-icon>
+                  </button>
+              </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+  </div>
+</div>

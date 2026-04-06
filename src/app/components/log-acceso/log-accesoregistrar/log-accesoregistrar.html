@@ -1,0 +1,58 @@
+<div class="container">
+    <h1>{{ edicion ? 'Editar' : 'Registro de' }} Log de Acceso</h1>
+
+    <form [formGroup]="form" (submit)="aceptar()">
+
+        <div class="form-group">
+            <mat-form-field appearance="outline">
+                <mat-label>Fecha de Acceso</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="fechaAcceso">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="form.get('fechaAcceso')?.hasError('required')">Requerido</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="form-group">
+            <mat-form-field appearance="outline">
+                <mat-label>Dirección IP</mat-label>
+                <input matInput formControlName="ipAcceso" placeholder="Ej. 192.168.1.1">
+                <mat-error *ngIf="form.get('ipAcceso')?.hasError('required')">Requerido</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="form-group">
+            <mat-form-field appearance="outline">
+                <mat-label>Navegador</mat-label>
+                <input matInput formControlName="navegadorAcceso" placeholder="Ej. Chrome, Firefox">
+                <mat-error *ngIf="form.get('navegadorAcceso')?.hasError('required')">Requerido</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="form-group">
+            <mat-form-field appearance="outline">
+                <mat-label>Sistema Operativo</mat-label>
+                <input matInput formControlName="sistemaoperativoAcceso" placeholder="Ej. Windows 11">
+                <mat-error *ngIf="form.get('sistemaoperativoAcceso')?.hasError('required')">Requerido</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="form-group">
+            <mat-form-field appearance="outline">
+                <mat-label>Usuario</mat-label>
+                <mat-select formControlName="usuario">
+                    <mat-option *ngFor="let u of listaUsuarios" [value]="u.id">
+                        {{ u.username }}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.get('usuario')?.hasError('required')">Requerido</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="button-group">
+            <button type="button" mat-button class="btn-secondary" routerLink="/logacceso/listar">Cancelar</button>
+            <button type="submit" mat-raised-button class="btn-primary" [disabled]="form.invalid">Aceptar</button>
+        </div>
+
+    </form>
+</div>

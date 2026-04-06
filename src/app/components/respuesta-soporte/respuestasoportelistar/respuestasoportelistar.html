@@ -1,0 +1,59 @@
+<div class="container response-table-wrapper">
+  <div style="text-align: center; margin: 5%">
+    <h2 class="title">Lista de Respuesta Soporte</h2>
+  </div>
+
+  <div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 custom-table">
+
+      <!-- ID -->
+      <ng-container matColumnDef="c1">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let element">{{ element.idRespuestaSoporte }}</td>
+      </ng-container>
+
+      <!-- Mensaje -->
+      <ng-container matColumnDef="c2">
+        <th mat-header-cell *matHeaderCellDef>Mensaje</th>
+        <td mat-cell *matCellDef="let element">{{ element.mensajeRespuestaSoporte }}</td>
+      </ng-container>
+
+      <!-- Fecha -->
+      <ng-container matColumnDef="c3">
+        <th mat-header-cell *matHeaderCellDef>Fecha</th>
+        <td mat-cell *matCellDef="let element">{{ element.fechacierreRespuestaSoporte }}</td>
+      </ng-container>
+
+      <!-- Ticket -->
+      <ng-container matColumnDef="c4">
+        <th mat-header-cell *matHeaderCellDef>Ticket</th>
+        <td mat-cell *matCellDef="let element">{{ element.treporte.estadoSoporte }}</td>
+      </ng-container>
+
+      <!-- Actualizar -->
+      <ng-container matColumnDef="c5">
+        <th mat-header-cell *matHeaderCellDef>Actualizar</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button color="accent"
+                  [routerLink]="['/respuestasoporte/edits', element.idRespuestaSoporte]">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <!-- Eliminar -->
+      <ng-container matColumnDef="c6">
+        <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button color="warn"
+                  (click)="eliminar(element.idRespuestaSoporte)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,72 @@
+<div class="container">
+  <div style="text-align: center; margin-bottom: 30px;">
+    <h2>Buscar Cuentas Activas</h2>
+  </div>
+
+  <div class="filtro-container">
+
+    <mat-form-field appearance="outline" class="filtro-item">
+      <mat-label>ID Usuario</mat-label>
+      <input matInput type="number" [(ngModel)]="filtroId" placeholder="Ej. 1">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="filtro-item">
+      <mat-label>Fecha de Registro</mat-label>
+      <div class="date-wrapper" style="display: flex; align-items: center;">
+        <input matInput [matDatepicker]="picker" [(ngModel)]="filtroFecha">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </div>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="buscar()" class="btn-buscar">
+      <mat-icon>search</mat-icon> Buscar
+    </button>
+  </div>
+
+  <div *ngIf="mensaje" class="mensaje-alerta">
+    {{ mensaje }}
+  </div>
+
+  <div class="mat-elevation-z8" *ngIf="dataSource.data.length > 0">
+    <table mat-table [dataSource]="dataSource">
+
+      <ng-container matColumnDef="c1">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.idCuenta}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="c2">
+        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+        <td mat-cell *matCellDef="let element"> {{element.nombreCuenta}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="c3">
+        <th mat-header-cell *matHeaderCellDef> Servicio </th>
+        <td mat-cell *matCellDef="let element"> {{element.servicioCuenta}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="c4">
+        <th mat-header-cell *matHeaderCellDef> Estado </th>
+        <td mat-cell *matCellDef="let element">
+           <span [style.color]="element.estadoCuenta ? 'green' : 'red'" style="font-weight: bold;">
+                {{ element.estadoCuenta ? 'Activo' : 'Inactivo' }}
+            </span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="c5">
+        <th mat-header-cell *matHeaderCellDef> Fecha Reg. </th>
+        <td mat-cell *matCellDef="let element"> {{element.fecharegistroCuenta | date:'dd/MM/yyyy'}} </td>
+      </ng-container>
+
+       <ng-container matColumnDef="c6">
+        <th mat-header-cell *matHeaderCellDef> Usuario </th>
+        <td mat-cell *matCellDef="let element"> {{element.usuario.username}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>

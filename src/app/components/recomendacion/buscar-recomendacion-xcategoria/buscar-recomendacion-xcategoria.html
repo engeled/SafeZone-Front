@@ -1,0 +1,48 @@
+<div class="container">
+  <!-- Input + botón -->
+  <div class="search-box">
+
+    <mat-form-field appearance="outline" class="input-box">
+      <mat-label>Seleccione categoría</mat-label>
+      <mat-select [(ngModel)]="categoria">
+        <mat-option *ngFor="let item of tipos" [value]="item.value">
+          {{ item.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="buscar()">Buscar</button>
+  </div>
+
+  <!-- Tabla -->
+  <mat-table *ngIf="reporte.length > 0" [dataSource]="reporte" class="mat-elevation-z4 table">
+
+    <!-- Usuario -->
+    <ng-container matColumnDef="username">
+      <mat-header-cell *matHeaderCellDef> Usuario </mat-header-cell>
+      <mat-cell *matCellDef="let item"> {{ item.username }} </mat-cell>
+    </ng-container>
+
+    <!-- Categoría -->
+    <ng-container matColumnDef="categoria">
+      <mat-header-cell *matHeaderCellDef> Categoría </mat-header-cell>
+      <mat-cell *matCellDef="let item"> {{ item.categoriaRecomendacion }} </mat-cell>
+    </ng-container>
+
+    <!-- Cantidad -->
+    <ng-container matColumnDef="cantidad">
+      <mat-header-cell *matHeaderCellDef> Total Recomendaciones </mat-header-cell>
+      <mat-cell *matCellDef="let item"> {{ item.cantidadRecomendaciones }} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+  </mat-table>
+
+  <!-- mensaje cuando no hay resultados -->
+  <p *ngIf="reporte.length === 0" class="empty-message">
+    ❌ Sin resultados para esta categoría.
+  </p>
+
+</div>

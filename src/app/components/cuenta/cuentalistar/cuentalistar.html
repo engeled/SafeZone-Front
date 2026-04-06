@@ -1,0 +1,68 @@
+<div class="container">
+  <div style="text-align: center; margin: 5%">
+    <h2>Lista de Cuentas</h2>
+  </div>
+
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+
+      <ng-container matColumnDef="c1">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.idCuenta}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="c2">
+        <th mat-header-cell *matHeaderCellDef> Servicio </th>
+        <td mat-cell *matCellDef="let element"> {{element.servicioCuenta}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="c3">
+        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+        <td mat-cell *matCellDef="let element"> {{element.nombreCuenta}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="c4">
+        <th mat-header-cell *matHeaderCellDef> Estado </th>
+        <td mat-cell *matCellDef="let element">
+            <span [style.color]="element.estadoCuenta ? 'green' : 'red'" style="font-weight: bold;">
+                {{ element.estadoCuenta ? 'Activo' : 'Inactivo' }}
+            </span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="c5">
+        <th mat-header-cell *matHeaderCellDef> Fecha Reg. </th>
+        <td mat-cell *matCellDef="let element"> {{element.fecharegistroCuenta | date:'dd/MM/yyyy'}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="c6">
+        <th mat-header-cell *matHeaderCellDef> Usuario </th>
+        <td mat-cell *matCellDef="let element"> {{element.usuario.username}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="c7">
+        <th mat-header-cell *matHeaderCellDef> Editar </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button color="primary" [routerLink]="['/cuentas/edicion', element.idCuenta]">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="c8">
+        <th mat-header-cell *matHeaderCellDef> Borrar </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button color="warn" (click)="eliminar(element.idCuenta)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>
+
+

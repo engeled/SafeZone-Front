@@ -1,0 +1,56 @@
+<div class="container">
+    <div style="text-align:center;margin: 5%"><h2>Lista de Ticket Soporte</h2></div>
+    <div>
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <!-- Position Column -->
+            <ng-container matColumnDef="c1">
+             <th mat-header-cell *matHeaderCellDef>ID</th>
+             <td mat-cell *matCellDef="let element">{{ element.idSoporte }}</td>
+            </ng-container>
+            <!-- Name Column -->
+            <ng-container matColumnDef="c2">
+             <th mat-header-cell *matHeaderCellDef>Asunto</th>
+             <td mat-cell *matCellDef="let element">{{ element.asuntoSoporte }}</td>
+            </ng-container>
+            <!-- Weight Column -->
+            <ng-container matColumnDef="c3">
+             <th mat-header-cell *matHeaderCellDef>Descripcion</th>
+             <td mat-cell *matCellDef="let element">{{ element.descripcionSoporte }}</td>
+             </ng-container>
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="c4">
+             <th mat-header-cell *matHeaderCellDef>Estado</th>
+             <td mat-cell *matCellDef="let element">{{ element.estadoSoporte }}</td>
+            </ng-container>
+           <!-- Symbol Column -->
+           <ng-container matColumnDef="c5">
+             <th mat-header-cell *matHeaderCellDef>Fecha</th>
+             <td mat-cell *matCellDef="let element">{{ element.fechacreacionSoporte }}</td>
+           </ng-container>
+           <!-- Symbol Column -->
+           <ng-container matColumnDef="cF">
+             <th mat-header-cell *matHeaderCellDef>Usuario</th>
+             <td mat-cell *matCellDef="let element">{{ element.usuario.username }}</td>
+           </ng-container>
+           <!-- Symbol Column -->
+           <ng-container matColumnDef="c6">
+             <th mat-header-cell *matHeaderCellDef>Actualizar</th>
+             <td mat-cell *matCellDef="let element">
+             <button matButton [routerLink]="['/ticketsoporte/edits', element.idSoporte]">
+               <mat-icon>edit</mat-icon>
+             </button>
+             </td>
+           </ng-container>
+           <ng-container matColumnDef="c7">
+            <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+            <td mat-cell *matCellDef="let element">
+            <button matButton (click)="eliminar(element.idSoporte)">
+            <mat-icon>delete</mat-icon>
+            </button>
+            </td>
+           </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+       </table>
+    </div>
+</div>

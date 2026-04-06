@@ -1,0 +1,48 @@
+<div class="title-container">
+
+ <div style="text-align: center" class="title"><h2>Query 2 </h2>
+
+ </div>
+
+<form #userForm="ngForm" (ngSubmit)="ngOnInit()">
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input matInput name="username" [(ngModel)]="username" required />
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Buscar</button>
+  </form>
+
+ @if(hasData==true){
+
+  <div style="text-align: center" class="chart-container">
+
+   <canvas
+
+    baseChart
+
+    [datasets]="barChartData"
+    [labels]="barChartLabels"
+    [options]="barchartOptions"
+    [legend]="barChartLegend"
+    [type]="barChartType"
+
+   ></canvas>
+
+  </div>
+
+ }
+
+
+
+ @if(hasData==false){
+
+  <div class="no-data">
+
+   <mat-icon class="no-data-icon">info_outline</mat-icon>
+
+   <p class="no-data-message">No hay datos disponibles para mostrar.</p>
+
+  </div>
+
+ }
+</div>

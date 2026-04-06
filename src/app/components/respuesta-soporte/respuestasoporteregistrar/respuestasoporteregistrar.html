@@ -1,0 +1,50 @@
+<div class="container">
+  <div style="text-align: center;margin:5%">
+    <h2>{{edicion ? 'Editar Respuestas' : 'Registrar Respuesta Soporte'}}</h2>
+  </div>
+  <div style="text-align: center;margin: 5%">
+    <form [formGroup]="form" (submit)="aceptar()">
+      @if(edicion){
+        <mat-form-field>
+          <mat-label>ID</mat-label>
+          <input matInput formControlName="codigo" />
+        </mat-form-field>
+      }
+      <br/>
+      <mat-form-field>
+        <mat-label>Mensaje</mat-label>
+        <input matInput formControlName="mensaje" />
+        <mat-error>
+          @if (form.get('mensaje')?.hasError('required')) { Ingrese mensaje de la respuesta!! }
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Fecha</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="fecha" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error>
+          @if (form.get('fecha')?.hasError('required')) { Ingrese fecha de la respuesta!! }
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Ticket</mat-label>
+        <mat-select formControlName="fk">
+          @for (t of listaTickets; track t) {
+          <mat-option [value]="t.idSoporte">{{ t.estadoSoporte }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <div>
+        <button matButton="elevated">{{ edicion ? 'Actualizar' : 'Registrar' }}</button>
+      </div>
+      <br />
+      <button mat-button color="primary" (click)="regresar()">
+         <mat-icon>arrow_back</mat-icon> Volver
+      </button>
+    </form>
+  </div>
+</div>

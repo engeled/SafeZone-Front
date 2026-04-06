@@ -1,0 +1,88 @@
+<div class="register-container">
+  <div class="glass-card">
+    <img src="assets/logosmenu/logo.png" alt="Logo" class="logo neon-glow">
+
+    <h2 class="title-neon">{{ edicion ? 'Editar Usuario' : 'Crear cuenta' }}</h2>
+
+    <form [formGroup]="form" (ngSubmit)="aceptar()">
+
+      <!-- CODIGO (solo edición) -->
+      <mat-form-field *ngIf="edicion" appearance="outline" class="full neon-field">
+        <mat-label>ID</mat-label>
+        <input matInput formControlName="codigo" readonly />
+        <mat-error *ngIf="form.get('codigo')?.invalid">Campo obligatorio</mat-error>
+      </mat-form-field>
+
+      <!-- USERNAME -->
+      <mat-form-field appearance="outline" class="full neon-field">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username" />
+        <mat-icon matSuffix class="icon-neon">person</mat-icon>
+        <mat-error *ngIf="form.get('username')?.invalid && form.get('username')?.touched">
+          Campo obligatorio
+        </mat-error>
+      </mat-form-field>
+
+      <!-- PASSWORD -->
+      <mat-form-field appearance="outline" class="full neon-field">
+        <mat-label>Contraseña</mat-label>
+        <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" />
+        <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword">
+          <mat-icon class="icon-neon">{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+        <mat-error *ngIf="form.get('password')?.invalid && form.get('password')?.touched">
+          Campo obligatorio
+        </mat-error>
+      </mat-form-field>
+
+      <!-- EMAIL -->
+      <mat-form-field appearance="outline" class="full neon-field">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email" />
+        <mat-icon matSuffix class="icon-neon">mail</mat-icon>
+        <mat-error *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
+          Email inválido
+        </mat-error>
+      </mat-form-field>
+
+      <!-- NOMBRES -->
+      <mat-form-field appearance="outline" class="full neon-field">
+        <mat-label>Nombres</mat-label>
+        <input matInput formControlName="nombres" />
+        <mat-icon matSuffix class="icon-neon">badge</mat-icon>
+        <mat-error *ngIf="form.get('nombres')?.invalid && form.get('nombres')?.touched">
+          Campo obligatorio
+        </mat-error>
+      </mat-form-field>
+
+      <!-- APELLIDOS -->
+      <mat-form-field appearance="outline" class="full neon-field">
+        <mat-label>Apellidos</mat-label>
+        <input matInput formControlName="apellidos" />
+        <mat-icon matSuffix class="icon-neon">account_circle</mat-icon>
+        <mat-error *ngIf="form.get('apellidos')?.invalid && form.get('apellidos')?.touched">
+          Campo obligatorio
+        </mat-error>
+      </mat-form-field>
+
+      <!-- TELEFONO -->
+      <mat-form-field appearance="outline" class="full neon-field">
+        <mat-label>Telefono</mat-label>
+        <input matInput formControlName="telefono" />
+        <mat-icon matSuffix class="icon-neon">phone</mat-icon>
+        <mat-error *ngIf="form.get('telefono')?.invalid && form.get('telefono')?.touched">
+          Campo obligatorio
+        </mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button class="btn neon-btn full" [disabled]="form.invalid">
+        {{ edicion ? 'Actualizar' : 'Registrarse' }}
+      </button>
+    </form>
+
+    <p class="footer-msg">
+      {{ edicion ? '' : '¿Ya tienes una cuenta?' }}
+      <a *ngIf="!edicion" routerLink="/login" class="neon-text">Inicia sesión</a>
+    </p>
+  </div>
+</div>

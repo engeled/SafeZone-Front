@@ -1,0 +1,119 @@
+/* ----------- CENTRADO ----------- */
+.login-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 1.4s ease-in-out;
+}
+
+/* ----------- LIQUID GLASS + NEON ----------- */
+.glass-card {
+  width: 420px;
+  padding: 25px;
+  border-radius: 20px;
+  text-align: center;
+
+  background: rgba(0, 15, 30, 0.35);
+  border: 1.5px solid rgba(0, 255, 255, 0.4);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+
+  box-shadow:
+    0 0 12px rgba(0, 255, 255, 0.35),
+    inset 0 0 15px rgba(0, 255, 255, 0.2);
+
+  transition: 0.3s ease;
+}
+
+.glass-card:hover {
+  box-shadow:
+    0 0 25px rgba(0, 255, 255, 0.7),
+    inset 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+/* ----------- LOGO ----------- */
+.logo {
+  width: 85px;
+  margin-bottom: 12px;
+}
+
+.neon-glow {
+  filter: drop-shadow(0 0 12px cyan);
+}
+
+/* ----------- TITULO ----------- */
+.title-neon {
+  color: #007bff;
+  text-shadow: 0 0 12px cyan;
+  margin-bottom: 15px;
+  font-size: 22px;
+}
+
+/* ----------- CAMPOS INPUT ----------- */
+.full-width {
+  width: 100%;
+
+  margin-bottom: 18px;
+}
+
+.neon-field {
+  --mdc-outlined-text-field-outline-color: rgba(0, 255, 255, 0.4);
+  --mdc-outlined-text-field-focus-outline-color: cyan;
+}
+
+.neon-field input {
+  color: cyan !important;
+}
+
+/* ICONOS */
+.icon-neon {
+  color: cyan !important;
+  text-shadow: 0 0 6px cyan;
+}
+
+/* ----------- BOTÓN ----------- */
+.login-btn {
+  width: 100%;
+  height: 45px;
+  font-size: 17px;
+  border-radius: 10px;
+}
+
+.neon-btn {
+  background: rgba(0, 255, 255, 0.15);
+  color: white !important;
+  border: 1px solid cyan;
+  box-shadow: 0 0 12px cyan;
+  transition: 0.25s ease;
+}
+
+.neon-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px cyan, 0 0 30px cyan;
+  background: rgba(0, 255, 255, 0.25);
+}
+
+/* ----------- LINK ----------- */
+.register-link {
+  margin-top: 15px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+/* Texto tipo neon */
+.neon-text {
+  color: cyan;
+  text-shadow: 0 0 10px cyan;
+}
+
+.neon-text:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* ----------- ANIMACIÓN ----------- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

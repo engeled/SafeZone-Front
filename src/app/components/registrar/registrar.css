@@ -1,0 +1,102 @@
+.register-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Fondo Glass Blanco */
+.glass-card {
+  width: 430px;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+
+  background: rgba(255, 255, 255, 0.18);
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+
+  box-shadow:
+    0 0 15px cyan,
+    inset 0 0 18px rgba(255, 255, 255, 0.25);
+
+  animation: fadeIn 1.3s ease;
+}
+
+/* Logo */
+.logo {
+  width: 90px;
+  margin-bottom: 10px;
+}
+
+/* Texto neon */
+.title-neon {
+  color: #007bff;
+  text-shadow: 0 0 12px cyan;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+/* Inputs */
+.full {
+  width: 100%;
+  margin-bottom: 18px;
+}
+
+/* Neon style */
+.neon-field {
+  --mdc-outlined-text-field-outline-color: rgba(0, 255, 255, 0.4);
+  --mdc-outlined-text-field-focus-outline-color: cyan;
+}
+
+.neon-field input {
+  color: #002c3b !important;
+  font-weight: 500;
+}
+
+/* Iconos neon */
+.icon-neon {
+  color: cyan !important;
+  text-shadow: 0 0 6px cyan;
+}
+
+/* Botón */
+.neon-btn {
+  background: rgba(0, 255, 255, 0.18);
+  border: 1px solid cyan;
+  color: white;
+  box-shadow: 0 0 12px cyan;
+  transition: 0.25s ease;
+  height: 45px;
+  font-size: 18px;
+}
+
+.neon-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px cyan, 0 0 40px cyan;
+  background: rgba(0, 255, 255, 0.3);
+}
+
+/* Footer */
+.footer-msg {
+  margin-top: 18px;
+  font-size: 14px;
+  color: white;
+}
+
+.neon-text {
+  color: cyan;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.neon-text:hover {
+  transform: scale(1.05);
+}
+
+/* Fade Anim */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.94); }
+  to { opacity: 1; transform: scale(1); }
+}

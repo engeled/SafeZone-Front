@@ -1,0 +1,46 @@
+<div class="container">
+  <div style="text-align: center; margin: 5%"><h2>{{ edicion ? 'Editar rol' : 'Registrar rol' }}</h2></div>
+  <div style="text-align: center; margin: 5%">
+    <form [formGroup]="form" (submit)="aceptar()">
+      @if(edicion){
+      <mat-form-field>
+        <mat-label>ID</mat-label>
+        <input matInput formControlName="codigo" />
+        <mat-error>
+          @if (form.get('codigo')?.hasError('required')) { Ingrese codigo del rol}
+        </mat-error>
+      </mat-form-field>
+      }
+
+      <br />
+      <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="rol" />
+        <mat-error>
+          @if (form.get('rol')?.hasError('required')) { Ingrese el nombre del rol }
+        </mat-error>
+      </mat-form-field>
+      <br /> 
+
+      <mat-form-field>
+        <mat-label>Usuario</mat-label>
+        <mat-select formControlName="fk">
+          @for (r of listaUsuarios; track r) {
+          <mat-option [value]="r.id">{{ r.username }}</mat-option>
+          }
+        </mat-select>
+        <mat-error>
+    @if (form.get('fk')?.hasError('required')) { Seleccione un usuario }
+  </mat-error>
+      </mat-form-field>
+
+
+      <div>
+        <button matButton="elevated">{{ edicion ? 'Actualizar' : 'Registrar' }}</button>
+      </div>
+      <div>
+      <button type="button" mat-raised-button class="btn-cancel" (click)="cancelar()">Cancelar </button>
+        </div>
+    </form>
+  </div>
+</div>

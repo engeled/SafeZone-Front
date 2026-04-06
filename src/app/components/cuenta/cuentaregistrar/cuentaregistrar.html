@@ -1,0 +1,61 @@
+<div class="container">
+    <h1>{{ edicion ? 'Editar' : 'Registro de' }} Cuenta</h1>
+
+    <form [formGroup]="form" (submit)="aceptar()">
+
+        <div class="form-group">
+            <mat-form-field appearance="outline">
+                <mat-label>Nombre de Cuenta</mat-label>
+                <input matInput formControlName="nombreCuenta" placeholder="Ej. Ahorros BCP">
+                <mat-error *ngIf="form.get('nombreCuenta')?.hasError('required')">Requerido</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="form-group">
+            <mat-form-field appearance="outline">
+                <mat-label>Servicio</mat-label>
+                <input matInput formControlName="servicioCuenta" placeholder="Ej. Netflix, Gmail">
+                <mat-error *ngIf="form.get('servicioCuenta')?.hasError('required')">Requerido</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="form-group">
+            <mat-form-field appearance="outline">
+                <mat-label>Estado</mat-label>
+                <mat-select formControlName="estadoCuenta">
+                    <mat-option *ngFor="let estado of listaEstados" [value]="estado.value">
+                        {{ estado.viewValue }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="form-group">
+            <mat-form-field appearance="outline">
+                <mat-label>Fecha de Registro</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="fecharegistroCuenta">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="form.get('fecharegistroCuenta')?.hasError('required')">Requerido</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="form-group">
+            <mat-form-field appearance="outline">
+                <mat-label>Usuario Responsable</mat-label>
+                <mat-select formControlName="usuario">
+                    <mat-option *ngFor="let u of listaUsuarios" [value]="u.id">
+                        {{ u.username }} ({{ u.nombres }})
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.get('usuario')?.hasError('required')">Requerido</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="button-group">
+            <button type="button" mat-button class="btn-secondary" routerLink="/cuentas/listar">Cancelar</button>
+            <button type="submit" mat-raised-button class="btn-primary" [disabled]="form.invalid">Aceptar</button>
+        </div>
+
+    </form>
+</div>

@@ -1,0 +1,73 @@
+<div class="container">
+  <div style="text-align: center;margin: 5%">
+    <h2>{{edicion ? 'Editar Ticket Soporte': 'Registrar Ticket Soporte'}}</h2>
+  </div>
+  <div style="text-align: center; margin: 5%">
+    <form [formGroup]="form" (submit)="aceptar()">
+      @if (edicion){
+        <mat-form-field>
+          <mat-label>ID</mat-label>
+          <input matInput formControlName="codigo" />
+        </mat-form-field>
+      }
+      <br />
+      <mat-form-field>
+        <mat-label>tipo</mat-label>
+        <input matInput formControlName="tipo" />
+        <mat-error>
+          @if (form.get('tipo')?.hasError('required')) { Ingrese tipo del ticket!! }
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Asunto</mat-label>
+        <input matInput formControlName="asunto" />
+        <mat-error>
+          @if (form.get('asunto')?.hasError('required')) { Ingrese asunto del ticket!! }
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Descripcion</mat-label>
+        <input matInput formControlName="descripcion" />
+        <mat-error>
+          @if (form.get('descripcion')?.hasError('required')) { Ingrese descripcion del ticket!! }
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Estado</mat-label>
+        <input matInput formControlName="estado" />
+        <mat-error>
+          @if (form.get('estado')?.hasError('required')) { Ingrese estado del ticket!! }
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Fecha</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="fechacreacion" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error>
+          @if (form.get('fechacreacion')?.hasError('required')) { Ingrese fecha del ticket!! }
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>User</mat-label>
+        <mat-select formControlName="fk">
+          @for (u of listaUsuarios; track u) {
+          <mat-option [value]="u.id">{{ u.username }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <div>
+        <button matButton="elevated">{{edicion? 'Actualizar':'Registrar'}}</button>
+      </div>
+      <button mat-button color="primary" (click)="regresar()">
+       <mat-icon>arrow_back</mat-icon> Volver
+      </button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,98 @@
+/* Fondo */
+body {
+  background: #0a0f1f;
+  font-family: Arial, sans-serif;
+}
+
+/* Glass + Neon Card */
+.glass-card-table {
+  max-width: 92%;
+  margin: 40px auto;
+  padding: 25px;
+  border-radius: 18px;
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.07);
+  border: 2px solid rgba(0, 255, 255, 0.2);
+  animation: pulseNeon 3s infinite alternate;
+  box-shadow: 0 0 30px rgba(0,255,255,0.3);
+}
+
+/* Neon breathing animation */
+@keyframes pulseNeon {
+  0% { box-shadow: 0 0 12px cyan; }
+  100% { box-shadow: 0 0 32px cyan, 0 0 60px #00eaff; }
+}
+
+/* Title */
+.title {
+  color: #00eaff;
+  font-size: 32px;
+  text-shadow: 0px 0px 12px cyan;
+}
+
+/* Table */
+.custom-table {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Table Header */
+.custom-table th {
+  background: rgba(0, 238, 255, 0.4);
+  color: rgb(0, 0, 0) !important;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
+  padding: 12px;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid cyan;
+}
+
+/* Table Cells */
+.custom-table td {
+  background: rgba(255,255,255,0.15);
+  color: #000000;
+  padding: 12px;
+  text-align: center;
+  transition: 0.25s ease-in-out;
+}
+
+/* Hover Row Effect */
+.custom-table tr:hover td {
+  background: rgba(0,255,255,0.25);
+  color: rgb(195, 9, 19);
+}
+
+/* Buttons Neon Style */
+button {
+  border-radius: 8px;
+  padding: 6px 12px;
+  transition: 0.2s ease;
+}
+
+/* Edit Button */
+button[color="primary"] {
+  background-color: #00bcd4 !important;
+  color: white;
+  box-shadow: 0px 0px 10px #00d0ff;
+}
+
+button[color="primary"]:hover {
+  background-color: #009bb2 !important;
+  transform: scale(1.1);
+  box-shadow: 0px 0px 20px #00eaff;
+}
+
+/* Delete Button */
+button[color="warn"] {
+  background-color: #ff1744 !important;
+  color: white;
+  box-shadow: 0px 0px 10px #ff4c6a;
+}
+
+button[color="warn"]:hover {
+  background-color: #d50032 !important;
+  transform: scale(1.1);
+  box-shadow: 0px 0px 18px #ff4c6a;
+}

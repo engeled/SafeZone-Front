@@ -1,0 +1,131 @@
+/* ---------------- BOTÓN DE SONIDO ---------------- */
+.boton-sonido {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+  background-color: #2944dd;
+  color: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.boton-sonido:hover {
+  background-color: #788AF3;
+}
+
+
+/* ---------------- TOOLBAR GLASS + NEON ---------------- */
+.custom-toolbar {
+  background: rgba(90, 0, 85, 0.35);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 6px 18px rgba(120, 0, 100, 0.35);
+
+  display: flex;
+  align-items: center;
+
+  /* 🔥 REDUCIDO 🔥 */
+  padding: 6px 12px;
+  border-radius: 10px;
+  height: 50px;
+
+  transition: box-shadow 0.4s ease;
+}
+
+.custom-toolbar:hover {
+  box-shadow: 0 0 22px rgba(180, 0, 255, 0.45);
+}
+
+.custom-toolbar button,
+.custom-toolbar mat-icon {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+
+/* ---------------- BOTONES DEL MENÚ ---------------- */
+.btn-rojo {
+  background: rgba(120, 0, 130, 0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  /* 🔥 REDUCIDO 🔥 */
+  font-size: 0.78rem;
+
+  border-radius: 8px;
+  margin: 3px;
+  padding: 6px 8px;
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+
+  transition: background 0.25s ease, transform 0.15s ease, box-shadow 0.25s ease;
+}
+
+.btn-rojo:hover {
+  background: rgba(0, 255, 34, 0.45);
+  box-shadow: 0 0 12px rgba(0, 255, 34, 0.6);
+  transform: scale(1.05);
+}
+
+
+/* ---------------- FIX ICONOS ---------------- */
+.custom-toolbar button.mat-mdc-button,
+.custom-toolbar .btn-rojo,
+.custom-toolbar button.mat-mdc-menu-trigger {
+
+  /* 🔥 REDUCIDO 🔥 */
+  min-height: 36px !important;
+  line-height: 36px !important;
+  padding: 0 12px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.custom-toolbar mat-icon {
+  /* 🔥 MÁS PEQUEÑO 🔥 */
+  font-size: 18px !important;
+  height: 20px !important;
+  width: 20px !important;
+  line-height: 20px !important;
+  margin-right: 4px;
+}
+
+.btn-rojo mat-icon {
+  /* 🔥 REDUCIDO 🔥 */
+  font-size: 1.1rem;
+}
+
+
+/* ---------------- MENÚ MATERIAL DESIGN GLASS ---------------- */
+.mat-mdc-menu-panel {
+  background: rgba(90, 0, 85, 0.35) !important;
+  backdrop-filter: blur(10px) saturate(150%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  border-radius: 10px !important;
+  padding: 4px 0;
+  box-shadow: 0 6px 18px rgba(120, 0, 180, 0.3) !important;
+}
+
+.mat-mdc-menu-item {
+  color: #000000 !important;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+
+.mat-mdc-menu-item:hover {
+  background: rgba(160, 0, 140, 0.35) !important;
+  transform: scale(1.04);
+}
+
+/* separador flexible */
+.spacer {
+  flex: 1 1 auto;
+}

@@ -1,0 +1,31 @@
+<div class="page-wrapper">
+  <div class="glass-card">
+    <h2 class="neon-title">📂 Total de Archivos por Usuario</h2>
+
+    <div class="controls">
+      <button class="refresh-btn" (click)="load()">⟳ Refrescar</button>
+    </div>
+
+    <div *ngIf="loading" class="loading">Cargando datos...</div>
+    
+
+    <table *ngIf="!loading && data.length > 0" class="neon-table">
+      <thead>
+        <tr>
+          <th>Usuario</th>
+          <th>Total archivos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of data">
+          <td>{{ row.username }}</td>
+          <td>{{ row.totalArchivos }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="!loading && (!data || data.length === 0)" class="empty">
+      No hay registros para mostrar
+    </div>
+  </div>
+</div>

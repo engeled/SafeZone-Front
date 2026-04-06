@@ -1,0 +1,73 @@
+<div class="glass-form-card">
+  <div class="container">
+    <div style="text-align: center; margin: 5%">
+      <h2 class="title neon-title">{{ edicion ? 'Editar Recomendacion' : 'Registrar Recomendacion' }}</h2>
+    </div>
+
+    <div style="text-align: center; margin: 5%">
+      <form [formGroup]="form" (submit)="aceptar()">
+
+        @if(edicion){
+        <mat-form-field>
+          <mat-label>ID</mat-label>
+          <input matInput formControlName="codigo" />
+        </mat-form-field>
+        }
+
+        <br />
+        <mat-form-field>
+          <mat-label>Título</mat-label>
+          <input matInput formControlName="titulo" />
+          <mat-error>
+            @if (form.get('titulo')?.hasError('required')) { Ingrese nombre del dispositivo!! }
+          </mat-error>
+        </mat-form-field>
+
+        <br />
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Categoria:</mat-label>
+          <mat-select formControlName="categoria" required>
+            @for (p of tipos; track p.value) {
+            <mat-option [value]="p.value">
+              {{ p.viewValue }}
+            </mat-option>
+            }
+          </mat-select>
+
+          @if (form.get('categoria')?.hasError('required')) {
+          <mat-error>El campo tipo es obligatorio.</mat-error>
+          }
+        </mat-form-field>
+
+        <br />
+
+        <mat-form-field>
+          <mat-label>Descripcion</mat-label>
+          <input matInput formControlName="descripcion" />
+          <mat-error>
+            @if (form.get('descripcion')?.hasError('required')) { Ingrese la descripción de la Recomendacion!! }
+          </mat-error>
+        </mat-form-field>
+
+        <br />
+
+        <mat-form-field>
+          <mat-label>Usuario</mat-label>
+          <mat-select formControlName="fk">
+            @for (a of listaUsuarios; track a) {
+            <mat-option [value]="a.id">{{ a.username }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <br />
+
+        <div>
+          <button matButton="elevated">{{ edicion ? 'Actualizar' : 'Registrar' }}</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
